@@ -1,4 +1,3 @@
-# zex-centric-drivers
 # Zex Centric Drivers
 
 Collection of Rust-based system tools and drivers for **Zainium OS**.
