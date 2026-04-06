@@ -1,0 +1,37 @@
+[package]
+name = "trace"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ali-Zain <alizain.x404@gmail.com>"]
+description = "Universal, distro-agnostic system call tracing tool for Linux"
+license = "MIT"
+repository = "https://github.com/alizainx404/zex-centric-drivers"
+
+[dependencies]
+libc = "0.2"
+nix = { version = "0.26", features = ["process"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.8"
+clap = { version = "3.2", features = ["derive"] }
+anyhow = "1.0"
+thiserror = "1.0"
+log = "0.4"
+env_logger = "0.10"
+chrono = "0.4"
+regex = "1.10"
+procfs = "0.14"
+colored = "2.0"
+
+[dev-dependencies]
+tempfile = "3.8"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[[bin]]
+name = "trace"
+path = "src/main.rs"
