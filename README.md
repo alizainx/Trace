@@ -1,27 +1,22 @@
-# Zex Centric Drivers
+# trace
 
-Collection of Rust-based system tools and drivers for **Zainium OS**.
+**Universal Process & Syscall Tracing Driver**
 
-All tools are designed with the following principles:
+A fast, secure, and distro-agnostic process tracing tool written in pure Rust for Zainium OS and other Linux distributions.
 
-- **Distro-agnostic** — Works seamlessly across Debian, Ubuntu, Arch, Fedora, Alpine, and Zainium OS
-- **Static binaries** — Compiled with musl for zero dependencies and maximum portability
-- **Secure by design** — Minimal privileges, proper sandboxing, and safe execution
-- **Clean & minimal** — Simple, fast, and user-friendly CLI experience
-- **Production ready** — Suitable for servers, workstations, CI/CD pipelines, and infrastructure automation
+**Maintained and Developed by Ali Zain** <alizain.x404@gmail.com>
 
-### Included Tools
+### Features
 
-| Tool           | Purpose                                      | Command                        |
-|----------------|----------------------------------------------|--------------------------------|
-| `zex`          | Universal command executor                   | `zex --equip`, `zex --reforge` |
-| `trace`        | Advanced process & syscall tracing           | `trace --process`              |
-| `zex-pylib`    | Python environment and library manager       | `zex --pylib`                  |
-| `zex-assay`    | GPU & accelerator driver manager             | `zex --assay gpu`              |
-| `zex-sweep`    | System cleanup and maintenance               | `zex sweep`                    |
+- Real-time syscall tracing using ptrace
+- Memory and CPU usage monitoring
+- Multiple output formats (Table, JSON, YAML)
+- Works on Debian, Ubuntu, Arch, Fedora, Alpine, and Zainium OS
+- Fully static binary (musl)
+- Secure privilege dropping
 
--
-  
-**Made for Zainium OS and modern Linux power users.**
+### Quick Usage
 
-*Maintained And Developed by Ali Zain*
+```bash
+# Basic tracing
+trace --process firefox
