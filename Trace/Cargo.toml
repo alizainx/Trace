@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["Ali-Zain <alizain.x404@gmail.com>"]
 description = "Universal, distro-agnostic system call tracing tool for Linux"
 license = "MIT"
-repository = "https://github.com/alizainx404/zex-centric-drivers"
+repository = "https://github.com/alizainx/Trace"
 
 [dependencies]
 libc = "0.2"
