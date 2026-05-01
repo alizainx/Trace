@@ -4,6 +4,8 @@
 
 A fast, secure, and distro-agnostic process tracing tool written in pure Rust for Zainium OS and other Linux distributions.
 
+**Maintained and Developed by Ali Zain** <alizain.x404@gmail.com>
+
 ### Features
 
 - Real-time syscall tracing using ptrace
@@ -18,3 +20,9 @@ A fast, secure, and distro-agnostic process tracing tool written in pure Rust fo
 ```bash
 # Basic tracing
 trace --process firefox
+
+# JSON output
+trace --process code --json
+
+# Live tracing
+trace --process firefox --live
