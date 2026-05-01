@@ -1,6 +1,6 @@
 [package]
 name = "trace"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 authors = ["Ali-Zain <alizain.x404@gmail.com>"]
 description = "Universal, distro-agnostic system call tracing tool for Linux"
