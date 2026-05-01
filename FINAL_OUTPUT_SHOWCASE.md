@@ -1,18 +1,20 @@
 # TRACE - Final Output Showcase
 
-**Production-Ready System Call Tracing Tool** 
-*Version 0.1.0 | Compiled: 7.3 MB | Status: Complete*
+**Production-Ready System Call Tracing Tool**
+Version 1.0.0 | Binary Size: 7.3 MB | Status: Complete
 
 ---
 
-##  Default Table Output (Recommended)
+## Default Table Output (Recommended)
 
-### Command:
+### Command
+
 ```bash
-$ trace --pid 1234
+trace --pid 1234
 ```
 
-### Output:
+### Output
+
 ```
 Trace started on process: bash (PID: 1234)
 
@@ -34,19 +36,21 @@ Network Activity
   Bytes sent      : 4.2 MB
   Bytes received  : 18.7 MB
 
-✓ Trace completed successfully.
+Trace completed successfully.
 ```
 
 ---
 
-##  JSON Output (Machine-Readable)
+## JSON Output (Machine-Readable)
 
-### Command:
+### Command
+
 ```bash
-$ trace --pid 1234 --format json
+trace --pid 1234 --format json
 ```
 
-### Output:
+### Output
+
 ```json
 {
   "network": {
@@ -84,14 +88,16 @@ $ trace --pid 1234 --format json
 
 ---
 
-##  YAML Output (Human-Friendly Structured)
+## YAML Output (Human-Readable Structured)
 
-### Command:
+### Command
+
 ```bash
-$ trace --pid 1234 --format yaml
+trace --pid 1234 --format yaml
 ```
 
-### Output:
+### Output
+
 ```yaml
 process:
   pid: 1234
@@ -115,14 +121,16 @@ timestamp: 2026-04-05 13:14:38.663Z
 
 ---
 
-##  Trace by Process Name
+## Trace by Process Name
 
-### Command:
+### Command
+
 ```bash
-$ trace --process firefox
+trace --process firefox
 ```
 
-### Output:
+### Output
+
 ```
 Trace started on process: firefox (PID: 3245)
 
@@ -144,20 +152,22 @@ Network Activity
   Bytes sent      : 127.5 MB
   Bytes received  : 512.3 MB
 
-✓ Trace completed successfully.
+Trace completed successfully.
 Output saved: ./trace/firefox_20260405_1314.json
 ```
 
 ---
 
-##  Save Output to File
+## Save Output to File
 
-### Command:
+### Command
+
 ```bash
-$ trace --pid 1234 --output ./traces
+trace --pid 1234 --output ./traces
 ```
 
-### Output:
+### Output
+
 ```
 Trace started on process: bash (PID: 1234)
 
@@ -179,20 +189,22 @@ Network Activity
   Bytes sent      : 4.2 MB
   Bytes received  : 18.7 MB
 
-✓ Trace completed successfully.
+Trace completed successfully.
 Output saved: ./traces/bash_20260405_1314.json
 ```
 
 ---
 
-##  System Information
+## System Information
 
-### Command:
+### Command
+
 ```bash
-$ trace info
+trace info
 ```
 
-### Output:
+### Output
+
 ```
 System Information
 
@@ -205,14 +217,16 @@ Architecture: x86_64
 
 ---
 
-##  List Running Processes
+## List Running Processes
 
-### Command:
+### Command
+
 ```bash
-$ trace processes
+trace processes
 ```
 
-### Output:
+### Output
+
 ```
 Running Processes
 
@@ -226,196 +240,171 @@ Running Processes
 
 ---
 
-##  Error Cases - Process Not Found
+## Error Case: Process Not Found
 
-### Command:
+### Command
+
 ```bash
-$ trace --process xyzapp
+trace --process xyzapp
 ```
 
-### Output:
-```
-✗ Process 'xyzapp' not found or not running.
+### Output
 
-   Quick fixes:
-   • Check process name spelling
-   • Use PID instead: trace --pid 1234
-   • List running processes: trace processes
+```
+Process 'xyzapp' not found or not running.
+
+Suggested actions:
+- Verify the process name
+- Use PID instead: trace --pid 1234
+- List running processes: trace processes
 ```
 
 ---
 
-##  Error Cases - Invalid PID
+## Error Case: Invalid PID
 
-### Command:
+### Command
+
 ```bash
-$ trace --pid 99999
+trace --pid 99999
 ```
 
-### Output:
-```
-✗ Process with PID 99999 not found.
+### Output
 
-   Quick fixes:
-   • Verify the PID is correct
-   • List running processes: trace processes
-   • Check your permissions (may need root)
+```
+Process with PID 99999 not found.
+
+Suggested actions:
+- Verify the PID
+- List running processes: trace processes
+- Check required permissions
 ```
 
 ---
 
-##  Help/Usage Information
+## Help and Usage Information
 
-### Command:
+### Command
+
 ```bash
-$ trace --help
+trace --help
 ```
 
-### Output:
+### Output
+
 ```
 trace 0.1.0
-A production-ready system call tracer for debugging and process analysis.
+A system call tracer for debugging and process analysis.
 
 USAGE:
     trace [OPTIONS] [SUBCOMMAND]
 
 OPTIONS:
-    -f, --format <FORMAT>
-            Output format (table, json, yaml)
-
-    -h, --help
-            Print help information
-
-    -l, --live
-            Enable live tracing output
-
-    -o, --output <OUTPUT>
-            Save output to directory
-
-    -p, --process <PROCESS>
-            Trace a process by name
-
-    -P, --pid <PID>
-            Trace a process by PID
-
-    -v, --verbose
-            Verbose logging
-
-    -V, --version
-            Print version information
+    -f, --format <FORMAT>     Output format (table, json, yaml)
+    -h, --help                Print help information
+    -l, --live                Enable live tracing output
+    -o, --output <OUTPUT>     Save output to directory
+    -p, --process <PROCESS>   Trace a process by name
+    -P, --pid <PID>           Trace a process by PID
+    -v, --verbose             Verbose logging
+    -V, --version             Print version information
 
 SUBCOMMANDS:
-    help         Print this message or the help of the given subcommand(s)
+    help         Display help information
     info         Show system information
     processes    List running processes
 ```
 
 ---
 
-## Key Features Demonstrated
+## Key Features
 
-###  Output Formats
-- **Table** (default) - Human-readable, professionally formatted
-- **JSON** - Machine-readable, API-friendly
-- **YAML** - Configuration-style, structured data
+### Output Formats
 
-###  Input Methods
-- **Process Name** - `--process firefox`
-- **Process ID** - `--pid 1234`
-- **Commands** - `info`, `processes`
+* Table (default, human-readable)
+* JSON (machine-readable)
+* YAML (structured and clean)
 
-###  Error Handling
-- Clear, actionable error messages
-- Suggestions for resolution
-- Helpful quick fixes
+### Input Methods
 
-###  Output Management
-- **Console display** - Default output
-- **File saving** - `--output ./directory`
-- **Verbose logging** - `--verbose` flag
+* Process name
+* Process ID
+* Built-in commands
 
-###  Information Categories
-- **Process Info** - PID, name, status, uptime, memory, CPU
-- **Syscall Summary** - Total, unique, top syscalls
-- **Network Activity** - Connections, bytes sent/received
-- **System Info** - OS, distro, kernel, architecture
+### Error Handling
 
----
+* Clear and actionable messages
+* Suggested fixes for users
 
-## Visual Design Elements
+### Output Management
 
-### Colors
--  **Cyan** - Headers and key information
--  **Green** - Success messages (✓)
--  **Red** - Error messages (✗)
--  **Yellow** - Warnings (⚠)
+* Console display
+* File export support
+* Verbose debugging option
 
-### Formatting
-- Clean alignment with proper spacing
-- Professional section headers
-- Readable key-value pairs
-- Intuitive visual hierarchy
+### Information Categories
 
-### Typography
-- **Bold** headers for emphasis
-- **Regular** text for readability
-- Consistent spacing throughout
-- Clear visual separation between sections
+* Process information
+* System call statistics
+* Network activity
+* System details
 
 ---
 
 ## Performance Metrics
 
-| Metric | Value |
-|--------|-------|
-| Binary Size | 7.3 MB |
-| Memory Usage | ~1.5 MB at runtime |
-| Startup Time | <100ms |
-| Compilation Time | ~40s (release) |
+| Metric           | Value                    |
+| ---------------- | ------------------------ |
+| Binary Size      | 7.3 MB                   |
+| Memory Usage     | Approximately 1.5 MB     |
+| Startup Time     | Less than 100 ms         |
+| Compilation Time | Approximately 40 seconds |
 | Platform Support | Linux x86_64, ARM64, ARM |
 
 ---
 
 ## Usage Examples
 
-### Example 1: Quick Process Check
+### Quick Process Check
+
 ```bash
-$ trace --process code
-# Shows current status of VS Code process
+trace --process code
 ```
 
-### Example 2: Detailed Analysis with JSON
+### JSON Export for Analysis
+
 ```bash
-$ trace --pid 1234 --format json > analysis.json
-# Export for programmatic analysis
+trace --pid 1234 --format json > analysis.json
 ```
 
-### Example 3: Save for Later Review
+### Save Output for Later Review
+
 ```bash
-$ trace --process firefox --output ./traces
-# Timestamp-based automatic naming
+trace --process firefox --output ./traces
 ```
 
-### Example 4: Verbose Debugging
+### Verbose Debugging
+
 ```bash
-$ trace --pid 1234 --verbose
-# Shows debug information and detailed logging
+trace --pid 1234 --verbose
 ```
 
 ---
 
 ## Conclusion
 
-**trace** is a production-ready system call tracing tool that combines:
--  Clean, professional output formatting
--  Multiple output formats for different use cases
--  Clear, helpful error messages
--  Efficient, optimized implementation
--  Comprehensive process monitoring
--  User-friendly CLI interface
+Trace is a production-ready system call tracing tool that provides:
 
-The tool is **fully functional** and ready for real-world use on Linux systems.
+* Clean and structured output
+* Multiple output formats for flexibility
+* Clear and helpful error handling
+* Efficient and optimized performance
+* Comprehensive process monitoring
+* A user-friendly command-line interface
+
+It is suitable for real-world usage on Linux systems and demonstrates a high standard of Rust-based system software development.
 
 ---
-
-*Zainium OS - Built with Rust for Security and Performance *
+Built with Rust for security and performance
+Version 0.1.0
+License: MIT
