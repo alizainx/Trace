@@ -2,13 +2,13 @@
 
 Universal Process and Syscall Tracing Driver
 
-A fast, secure, and distribution-agnostic process tracing tool written in pure Rust for Linux systems, including Zainium OS.
+A fast, secure, and distribution-agnostic process tracing tool written in pure Rust for Linux systems.
 
 ## Features
 Real-time system call tracing using ptrace
 Memory and CPU usage monitoring
 Multiple output formats (Table, JSON, YAML)
-Compatible with Debian, Ubuntu, Arch, Fedora, Alpine, and Zainium OS
+Compatible with Debian, Ubuntu, Arch, Fedora, Alpine.
 Fully static binary using musl (x86_64-unknown-linux-musl)
 Secure privilege dropping
 Static Build (musl)
@@ -48,9 +48,3 @@ trace --process firefox --live
 Contributors
 
 Contributions are welcome. Anyone can contribute to this project.
-
-To contribute:
-
-. Make your changes
-. Commit and push
-. Open a pull request
