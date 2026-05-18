@@ -3,7 +3,11 @@ use serde_json::json;
 
 pub fn format_json(data: &TraceData) -> crate::utils::TraceResult<String> {
     let stats = data.syscalls.get_stats();
-    let top_syscalls = stats.iter().take(3).map(|s| s.name.clone()).collect::<Vec<_>>();
+    let top_syscalls = stats
+        .iter()
+        .take(3)
+        .map(|s| s.name.clone())
+        .collect::<Vec<_>>();
 
     let json = json!({
         "process": {

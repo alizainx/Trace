@@ -26,6 +26,9 @@ colored = "2.0"
 [dev-dependencies]
 tempfile = "3.8"
 
+[features]
+build-time = []
+
 [profile.release]
 opt-level = 3
 lto = true

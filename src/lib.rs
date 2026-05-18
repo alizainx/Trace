@@ -1,13 +1,13 @@
-pub mod utils;
+pub mod cli;
 pub mod detector;
+pub mod output;
 pub mod sandbox;
 pub mod tracer;
-pub mod output;
-pub mod cli;
+pub mod utils;
 
-pub use utils::{TraceError, TraceResult};
-pub use detector::{OsInfo, KernelInfo};
+pub use cli::Cli;
+pub use detector::{KernelInfo, OsInfo};
+pub use output::OutputFormat;
 pub use sandbox::{drop_privileges, verify_permissions};
 pub use tracer::TraceData;
-pub use output::OutputFormat;
-pub use cli::Cli;
+pub use utils::{TraceError, TraceResult};

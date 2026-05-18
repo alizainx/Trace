@@ -17,13 +17,13 @@ impl ProcessInfo {
         let proc = Process::new(pid as i32)
             .map_err(|_| TraceError::ProcessNotFound(format!("PID {}", pid)))?;
 
-        let stat = proc
-            .stat()
-            .map_err(|_| TraceError::ProcessNotFound(format!("Cannot read stats for PID {}", pid)))?;
+        let stat = proc.stat().map_err(|_| {
+            TraceError::ProcessNotFound(format!("Cannot read stats for PID {}", pid))
+        })?;
 
-        let status = proc
-            .status()
-            .map_err(|_| TraceError::ProcessNotFound(format!("Cannot read status for PID {}", pid)))?;
+        let status = proc.status().map_err(|_| {
+            TraceError::ProcessNotFound(format!("Cannot read status for PID {}", pid))
+        })?;
 
         let name = stat.comm.clone();
         let memory_mb = status.vmrss.unwrap_or(0) / 1024; // Convert to MB

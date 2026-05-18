@@ -2,7 +2,10 @@ use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
 #[clap(name = "trace")]
-#[clap(about = "Universal, distro-agnostic system call tracing tool for Linux", version)]
+#[clap(
+    about = "Universal, distro-agnostic system call tracing tool for Linux",
+    version
+)]
 #[clap(long_about = "A production-ready system call tracer for debugging and process analysis.")]
 pub struct Cli {
     #[clap(subcommand)]
@@ -73,5 +76,96 @@ impl Cli {
             Some("yaml") => crate::output::OutputFormat::Yaml,
             _ => crate::output::OutputFormat::Table,
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn validate_requires_process_or_pid_or_command() {
+        let cli = Cli {
+            command: None,
+            process: None,
+            pid: None,
+            live: false,
+            format: None,
+            output: None,
+            verbose: false,
+        };
+
+        assert!(matches!(
+            cli.validate().unwrap_err(),
+            crate::utils::TraceError::ConfigError(_)
+        ));
+    }
+
+    #[test]
+    fn validate_rejects_invalid_format() {
+        let cli = Cli {
+            command: Some(Commands::Info),
+            process: None,
+            pid: None,
+            live: false,
+            format: Some("xml".into()),
+            output: None,
+            verbose: false,
+        };
+
+        assert!(matches!(
+            cli.validate().unwrap_err(),
+            crate::utils::TraceError::ConfigError(_)
+        ));
+    }
+
+    #[test]
+    fn get_output_format_defaults_to_table() {
+        let cli = Cli {
+            command: Some(Commands::Info),
+            process: None,
+            pid: None,
+            live: false,
+            format: None,
+            output: None,
+            verbose: false,
+        };
+
+        assert!(matches!(
+            cli.get_output_format(),
+            crate::output::OutputFormat::Table
+        ));
+    }
+
+    #[test]
+    fn get_output_format_accepts_json_and_yaml() {
+        let cli_json = Cli {
+            command: Some(Commands::Info),
+            process: None,
+            pid: None,
+            live: false,
+            format: Some("json".into()),
+            output: None,
+            verbose: false,
+        };
+
+        let cli_yaml = Cli {
+            command: Some(Commands::Info),
+            process: None,
+            pid: None,
+            live: false,
+            format: Some("yaml".into()),
+            output: None,
+            verbose: false,
+        };
+
+        assert!(matches!(
+            cli_json.get_output_format(),
+            crate::output::OutputFormat::Json
+        ));
+        assert!(matches!(
+            cli_yaml.get_output_format(),
+            crate::output::OutputFormat::Yaml
+        ));
     }
 }

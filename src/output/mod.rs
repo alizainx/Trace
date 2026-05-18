@@ -1,6 +1,6 @@
 pub mod json;
-pub mod yaml;
 pub mod table;
+pub mod yaml;
 
 use crate::tracer::TraceData;
 use crate::utils::TraceResult;

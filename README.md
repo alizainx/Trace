@@ -1,6 +1,6 @@
 # trace
 
-Universal Process and Syscall Tracing Driver
+Universal Process and Syscall Tracing Tool
 
 A fast, secure, and distribution-agnostic process tracing tool written in pure Rust for Linux systems.
 

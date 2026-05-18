@@ -1,9 +1,9 @@
 //Maintained and Developed by Ali Zain <alizain.x404@gmail.com>
 
 use clap::Parser;
-use trace::*;
 use colored::Colorize;
 use log::info;
+use trace::*;
 
 fn main() {
     let cli = Cli::parse();
@@ -50,11 +50,18 @@ fn main() {
             match tracer::ProcessInfo::from_name(name) {
                 Ok(proc) => proc.pid,
                 Err(_) => {
-                    eprintln!("\n{} Process '{}' not found or not running.\n", "✗".red(), name.cyan());
+                    eprintln!(
+                        "\n{} Process '{}' not found or not running.\n",
+                        "✗".red(),
+                        name.cyan()
+                    );
                     eprintln!("   Quick fixes:");
                     eprintln!("   • Check process name spelling");
                     eprintln!("   • Use PID instead: {} --pid 1234", "trace".bold());
-                    eprintln!("   • List running processes: {} processes\n", "trace".bold());
+                    eprintln!(
+                        "   • List running processes: {} processes\n",
+                        "trace".bold()
+                    );
                     std::process::exit(1);
                 }
             }
@@ -62,7 +69,11 @@ fn main() {
         (_, Some(pid)) => {
             // Verify PID exists
             if !tracer::ProcessInfo::exists(*pid) {
-                eprintln!("\n{} Process with PID {} not found.\n", "✗".red(), pid.to_string().cyan());
+                eprintln!(
+                    "\n{} Process with PID {} not found.\n",
+                    "✗".red(),
+                    pid.to_string().cyan()
+                );
                 eprintln!("   Quick fixes:");
                 eprintln!("   • Verify the PID is correct");
                 eprintln!("   • List running processes: {} processes", "trace".bold());
@@ -74,10 +85,22 @@ fn main() {
         _ => {
             eprintln!("\n{} No process specified.\n", "✗".red());
             eprintln!("   Usage:");
-            eprintln!("   • {} --process <name>  (trace by process name)", "trace".bold());
-            eprintln!("   • {} --pid <PID>       (trace by process ID)", "trace".bold());
-            eprintln!("   • {} info              (show system info)", "trace".bold());
-            eprintln!("   • {} processes         (list running processes)\n", "trace".bold());
+            eprintln!(
+                "   • {} --process <name>  (trace by process name)",
+                "trace".bold()
+            );
+            eprintln!(
+                "   • {} --pid <PID>       (trace by process ID)",
+                "trace".bold()
+            );
+            eprintln!(
+                "   • {} info              (show system info)",
+                "trace".bold()
+            );
+            eprintln!(
+                "   • {} processes         (list running processes)\n",
+                "trace".bold()
+            );
             std::process::exit(1);
         }
     };
