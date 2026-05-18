@@ -44,7 +44,3 @@ trace --process code --format json
 # Live tracing
 trace --process firefox --live
 
-```
-Contributors
-
-Contributions are welcome. Anyone can contribute to this project.
